@@ -56,6 +56,8 @@ def get_motivational_quote():
            # Convert binary data to image
            img_bytes = io.BytesIO(response.content)
            img = Image.open(img_bytes)
+           # Display in Streamlit
+           st.image(img, caption="Motivational Image", use_column_width=True)
            #data = response.json()
            #quote = data[0]['q']
            #author = data[0]['a']
@@ -72,5 +74,4 @@ if st.button("Get My Vibe"):
     st.markdown(f"<div class='vibe-text'>Your vibe for today: {vibe}</div>", unsafe_allow_html=True)
 #    st.markdown(f"<p style='color:white; font-size:1.2em;'><em>{quote}</em></p>", unsafe_allow_html=True)
 
-# Display in Streamlit
-    st.image(img, caption="Motivational Image", use_column_width=True)
+
