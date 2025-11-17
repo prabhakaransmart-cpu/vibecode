@@ -73,7 +73,7 @@ if st.button("Get My Vibe"):
 #    st.markdown(f"<p style='color:white; font-size:1.2em;'><em>{quote}</em></p>", unsafe_allow_html=True)
 
 # Display in Streamlit
-    st.image(img, caption="Motivational Image", use_column_width=True)
+    st.image({img}, caption="Motivational Image", use_column_width=True)
 else:
     st.error("Failed to fetch image.")
 
