@@ -44,7 +44,7 @@ st.write("Get your coding vibe for today!")
 
 # User input
 name = st.text_input("What's your name?")
-m_input("How are you feeling today?")
+mood = st.text_input("How are you feeling today?")
 
 if st.button("Get My Vibe"):
     vibe = random.choice(vibes)
