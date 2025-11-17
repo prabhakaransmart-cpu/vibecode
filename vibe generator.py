@@ -1,5 +1,7 @@
+
 import streamlit as st
 import random
+import requests
 
 # List of vibes with emojis
 vibes = [
@@ -13,7 +15,7 @@ vibes = [
     "🔥 Full-on motivation"
 ]
 
-# Apply a colorful theme using Streamlit's markdown and CSS
+# Page config
 st.set_page_config(page_title="Vibe Generator", page_icon="✨", layout="centered")
 
 # Custom CSS for colorful background
@@ -40,12 +42,27 @@ st.markdown("""
 
 # App title
 st.markdown("<h1 style='text-align:center; color:white;'>✨ Vibe Generator ✨</h1>", unsafe_allow_html=True)
-st.write("Get your coding vibe for today!")
+st.write("Get your coding vibe and motivation for today!")
 
 # User input
 name = st.text_input("What's your name?")
 mood = st.text_input("How are you feeling today?")
 
+def get_motivational_quote():
+    try:
+        response = requests.get("https://zenquotes.io/api/random")
+        if response.status_code == 200:
+            data = response.json()
+            quote = data[0]['q']
+            author = data[0]['a']
+            return f'"{quote}" — {author}'
+        else:
+            return "Could not fetch quote. Try again later."
+    except Exception as e:
+        return f"Error: {e}"
+
 if st.button("Get My Vibe"):
     vibe = random.choice(vibes)
+    quote = get_motivational_quote()
     st.markdown(f"<div class='vibe-text'>Hey {name}, feeling {mood}?<br>Your vibe for today: {vibe}</div>", unsafe_allow_html=True)
+    st.markdown(f"<p style='color:white; font-size:1.2em;'><em>{quote}</em></p>", unsafe_allow_html=True)
