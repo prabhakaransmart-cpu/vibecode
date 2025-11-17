@@ -65,4 +65,4 @@ if st.button("Get My Vibe"):
     vibe = random.choice(vibes)
     quote = get_motivational_quote()
     st.markdown(f"<div class='vibe-text'>Hey {name}, feeling {mood}?<br>Your vibe for today: {vibe}</div>", unsafe_allow_html=True)
-    st.markdown(f"<p style='color:white; font-size:1.2em;'><img src="{quote}"></img></p>", unsafe_allow_html=True)
+    st.markdown(f"<p style='color:white; font-size:1.2em;'><img src="{quote}" width="500" height="600"></p>", unsafe_allow_html=True)
